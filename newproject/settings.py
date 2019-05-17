@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from typing import Set, Union
+
 import pymysql
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'Web_project',
+
 ]
 
 
@@ -58,7 +61,7 @@ ROOT_URLCONF = 'newproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR+"/templates", ],
+        'DIRS': (BASE_DIR, 'templates'),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,14 +84,14 @@ pymysql.install_as_MySQLdb()
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangotester',
-        'HOST': 'localhost',
-        'USER': 'root',
-        'PASSWORD': '111111',
-        'PORT': '3309',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'djangotester',
+        # 'HOST': 'localhost',
+        # 'USER': 'root',
+        # 'PASSWORD': '111111',
+        # 'PORT': '3309',
     }
 
 }
@@ -131,3 +134,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# STATIC_ROOT 就是我们最终部署时候需要使用的，解决资源分散的问题。
+# BASE_DIR 这个变量在settings.py的开始部分被定义，就是项目根目录的目录名。
+# os.path.join 方法，在项目根目录下新建一个static文件夹。
+
+STATIC_ROOT = (BASE_DIR, 'static')

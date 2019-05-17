@@ -4,6 +4,7 @@ from django.shortcuts import HttpResponse
 
 # Create your views here.
 def index(request):   # request封装了用户请求的所有内容
-    return render(request, 'home.html')
+
+    return render(request, 'index.html')
 
 
