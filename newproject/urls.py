@@ -19,6 +19,6 @@ from Web_project import views
 
 
 urlpatterns = [
-    url(r'', views.index, name='home'),
-    url(r'admin/', admin.site.urls),
+    url('', views.index, name='home'),
+    url('admin', admin.site.urls),
 ]
