@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 from Web_project import views
-from newproject import settings
+
 
 urlpatterns = [
     url(r'', views.index, name='home'),
